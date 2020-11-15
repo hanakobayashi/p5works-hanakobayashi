@@ -16,10 +16,19 @@ function linechart(scores){
   fill(0);
   const dx = width / scores.length;
   let px, py; // 線を引くために一つ前の点を覚えておく変数
-  for(let i = 0; i < scores.length; i++){
+  for(let i = 1; i < scores.length; i++){
+    const y = height * scores[i] / 100;
+beginShape(LINES);
+    vertex(px, py);
+    vertex(i*dx, y);
+    endShape();
+    px = i * dx;
+    py = y;
+    ellipse(i*dx, y, 5);
     // BLANK[1]
   }
 }
+
 
 function scaleY(n){
   for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }
