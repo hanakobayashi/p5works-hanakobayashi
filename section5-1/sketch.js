@@ -1,8 +1,6 @@
-// テキスト「配列」～「配列を使った描画」までを収録
 function setup(){
   createCanvas(400, 400);
   background(240);
-
   let scores = [];
   for(let i = 0; i < 10; i++){
     scores[i] = random(20, 100); // 60以上100未満のランダムな数を代入
@@ -44,35 +42,31 @@ function smallest(arr){
       n = arr[i] };
     }
     // BLANK[3]
-  }
   return n;
 }
 
 // テキスト「配列を使った描画」棒グラフ
 function barchart(scores){
   scaleY(10);
-  // return largest(arr);
-  // return smallest(arr);
-  // return average(arr);
   // BLANK[4] (hint: largest, smallest, average を使って先にそれぞれの値を計算しておきます)
   noStroke();
-
   for(let i = 0; i < scores.length; i++){
     const dx = width / scores.length;// 棒の幅（固定）
     const h = height * scores[i] / 100; // 棒の高さ（点数に比例）
-    // if(scores[i] = largest(arr){
-    //   fill(255, 0, 0);}
-    //   else if (scores[i] = smallest(arr){
-    //     fill(0, 0, 255):}
-      }
-    }
+    if(scores[i] == largest(scores)){
+      fill(255, 0, 0);}
+      else if (scores[i] == smallest(scores)){
+        fill(0, 0, 255);}
+        else {
+          fill(128);
+        }
     // BLANK[5] (hint: 条件分岐を使って色を変更します)
     rect(i * dx + 2, height - h, dx - 4, h);
     fill(0);
-    text(scores[i].toPrecision(3), i * dx, height - h);
+    text(scores[i].toPrecision(3), i * dx, height - h);}
+    stroke(0, 255, 0);
+    line(0, average(scores), 400, average(scores)); // BLANK[6] (hint: 平均点の線を引きます)
   }
-  // line(0, average(arr), 400, average(arr)); // BLANK[6] (hint: 平均点の線を引きます)
-}
 
 function scaleY(n){
   for(let i = 0; i < n; i++){ line(0, height * i / n, width, height * i / n); }
