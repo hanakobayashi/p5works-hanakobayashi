@@ -16,6 +16,8 @@ function setup(){
 function calendar(y, m){
   let dow = dayOfWeek(y, m, 1);
   for(let d = 1; d <= daysInMonth(y, m); d++){
+    dayOfWeekAsString(dayOfWeek);
+    
     // BLANK[3] (hint: まずは daysInYear(done), dayOfWeek を作ろう)
   }
 }
@@ -50,7 +52,14 @@ function dayOfYear(y, m, d){
 }
 
 function dayOfWeek(y, m, d){
+  let count = 0
+for( let i = 1970; i < y; i++){
+  count += daysInYear(i);
+}
+count += dayOfYear(y, m, d);
+return count % 7;
   // BLANK[2]
+  // 1970/01/01  木曜日
 }
 
 function dayOfWeekAsString(dow){
