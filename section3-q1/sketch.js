@@ -4,6 +4,9 @@
 function setup(){
   createCanvas(400, 400);
   background(255);
+}
+
+function draw(){
   let bc = color(0, 102, 255);
   let tc = color(255, 255, 255);
   balloon("I love keyakizaka46", 20, 30, bc, tc);
